@@ -3,7 +3,7 @@
   "Name": "discord",
   "SuggestedBots": 1,
   "MaxCPM": 0,
-  "LastModified": "2024-12-06T14:30:25.6309087+03:00",
+  "LastModified": "2024-12-06T14:52:13.2878464+03:00",
   "AdditionalInfo": "",
   "RequiredPlugins": [],
   "Author": "",
@@ -20,7 +20,7 @@
   "BanProxyAfterGoodStatus": false,
   "BanLoopEvasionOverride": -1,
   "EncodeData": false,
-  "AllowedWordlist1": "",
+  "AllowedWordlist1": "User",
   "AllowedWordlist2": "",
   "DataRules": [],
   "CustomInputs": [],
@@ -82,9 +82,9 @@ REQUEST GET "https://discord.com/api/v9/users/@me/guilds/premium/subscription-sl
   HEADER "Priority: u=0" 
   HEADER "TE: trailers" 
 
-KEYCHECK 
+KEYCHECK BanOnToCheck=FALSE 
   KEYCHAIN Success OR 
-    KEY "\"premium_guild_subscription\":null" 
+    KEY "premium_guild_subscription\":null" 
   KEYCHAIN Custom "USED" OR 
-    KEY "\"premium_guild_subscription\":{\"id\":\"" 
+    KEY "<SOURCE>" DoesNotContain "premium_guild_subscription\":null" 
 
